@@ -40,8 +40,11 @@ type ResumeData = {
 };
 
 function renderContact(contact: ResumeData['contact']): string {
-  const parts = [contact.location, contact.email, contact.phone, contact.website, contact.linkedin, contact.github]
-    .filter(Boolean)
+  const parts = [
+    'liam@liamcampbell.net',
+    '(805) 625-3851',
+    'https://linkedin.com/in/liamacampbell'
+  ]
     .map((p) => `<span>${p}</span>`)
     .join('<span class="sep">•</span>');
   return `<div class="contact">${parts}</div>`;
@@ -66,12 +69,12 @@ export function generateResumeHtml(data: ResumeData): string {
       const headerRight = [dates.join(' – '), role.location].filter(Boolean).join(' • ');
       return `
         <div class="experience-item">
-          <div class="item-header">
-            <div>
+          <div class="item-info">
+            <div class="title-row">
               <h4>${role.role}</h4>
-              <div class="company">${role.company}</div>
+              <div class="meta">${headerRight}</div>
             </div>
-            <div class="meta">${headerRight}</div>
+            <div class="company">${role.company}</div>
           </div>
           ${renderList(role.bullets, 'bullets')}
         </div>
@@ -84,12 +87,12 @@ export function generateResumeHtml(data: ResumeData): string {
       const right = [p.link].filter(Boolean).join('');
       return `
         <div class="project-item">
-          <div class="item-header">
-            <div>
+          <div class="item-info">
+            <div class="title-row">
               <h4>${p.name}</h4>
-              <div class="company">${p.technologies?.join(', ') || ''}</div>
+              <div class="meta">${right}</div>
             </div>
-            <div class="meta">${right}</div>
+            <div class="company">${p.technologies?.join(', ') || ''}</div>
           </div>
           <div class="description">${p.description}</div>
           ${renderList(p.bullets, 'bullets')}
@@ -98,20 +101,17 @@ export function generateResumeHtml(data: ResumeData): string {
     })
     .join('');
 
-  const education = (data.education || [])
-    .map((e) => `
-      <div class="education-item">
-        <div class="item-header">
-          <div>
-            <h4>${e.degree || ''}</h4>
-            <div class="company">${e.school}</div>
-          </div>
-          <div class="meta">${e.graduationDate || ''}</div>
+  const education = `
+    <div class="education-item">
+      <div class="item-info">
+        <div class="title-row">
+          <h4>Business Administration (B.Sc)</h4>
+          <div class="meta">Graduated May 2021</div>
         </div>
-        ${renderList(e.details, 'bullets')}
+        <div class="company">University of California, Berkeley, Haas School of Business</div>
       </div>
-    `)
-    .join('');
+    </div>
+  `;
 
   const certs = renderList(data.certifications, 'bullets');
 
