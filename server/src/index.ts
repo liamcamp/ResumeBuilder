@@ -168,7 +168,9 @@ function buildSystemPrompt(): string {
     '- Avoid flowery language, keep sentences scannable.',
     '- Never invent facts beyond the candidate input; fill unknowns with best-effort from about me.',
     '- Target 3-5 experience items with 3-4 bullets each for optimal one-page fit.',
-    '- IMPORTANT: For experiences at "Oracle" and "UC Berkeley Consulting Club", include ONLY ONE short, concise bullet point each.',
+    '- IMPORTANT: OMIT all founder experience. Do not include any roles where the candidate was a founder.',
+    '- IMPORTANT: Break experience at "Fynch" and at "Original Joe\'s" into TWO separate entries. These were different roles.',
+    '- IMPORTANT: Do not include any experiance at UC Berkeley Consulting Club or Oracle.',
     '- IMPORTANT: In the projects section, include ONLY the "Original Joe\'s" project.',
     '- Keep summary to 2-3 sentences maximum.',
     '- Be concise but comprehensive - every word should add value.'
