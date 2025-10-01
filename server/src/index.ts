@@ -168,6 +168,8 @@ function buildSystemPrompt(): string {
     '- Avoid flowery language, keep sentences scannable.',
     '- Never invent facts beyond the candidate input; fill unknowns with best-effort from about me.',
     '- Target 3-5 experience items with 3-4 bullets each for optimal one-page fit.',
+    '- IMPORTANT: For experiences at "Oracle" and "UC Berkeley Consulting Club", include ONLY ONE short, concise bullet point each.',
+    '- IMPORTANT: In the projects section, include ONLY the "Original Joe\'s" project.',
     '- Keep summary to 2-3 sentences maximum.',
     '- Be concise but comprehensive - every word should add value.'
   ].join('\n');
